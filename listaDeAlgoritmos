@@ -1,0 +1,28 @@
+## Algoritmos de ordenação
+
+Insertion sort:
+	Stable
+	O(1) extra space
+	O(n2) comparisons and swaps
+	Adaptive: O(n) time when nearly sorted
+	Very low overhead
+
+Quick Sort 3:
+	Not stable
+	O(lg(n)) extra space
+	O(n2) time, but typically O(n·lg(n)) time
+	Adaptive: O(n) time when O(1) unique keys
+
+Heap Sort:
+	Not stable
+	O(1) extra space (see discussion)
+	O(n·lg(n)) time
+	Not really adaptive
+
+Quick Sort:
+	Not stable
+	O(lg(n)) extra space (see discussion)
+	O(n2) time, but typically O(n·lg(n)) time
+	Not adaptive
+
+Counting sort:
