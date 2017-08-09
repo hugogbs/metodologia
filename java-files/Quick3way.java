@@ -40,8 +40,8 @@ import java.io.*;
 
 public class Quick3way {
 
-  private long initialTime;
-  private long finalTime;
+  private static long initialTime;
+  private static long finalTime;
   private static String inputFile;
   private static String outputFile;
 
@@ -57,7 +57,6 @@ public class Quick3way {
 
     // quicksort the subarray a[lo .. hi] using 3-way partitioning
     private void sort(Comparable[] a, int lo, int hi) {
-      initialTime = System.nanoTime();
 
         if (hi <= lo) return;
         int lt = lo, gt = hi;
@@ -73,13 +72,11 @@ public class Quick3way {
         // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
         sort(a, lo, lt-1);
         sort(a, gt+1, hi);
-        finalTime = System.nanoTime();
-        writeOutput();
     }
 
-     private void writeOutput() {
+     private static void writeOutput() {
     	long duration = finalTime - initialTime;
-    	String sortingMethod = "InsertionSort";
+    	String sortingMethod = "Quick3WaySort";
 
     	try {
     		FileWriter fw = new FileWriter(outputFile, true);
@@ -163,7 +160,10 @@ public class Quick3way {
     			s.close();
 
     			Quick3way ob = new Quick3way();
+    			initialTime = System.nanoTime();
     			ob.sort(input);
+    			finalTime = System.nanoTime();
+				writeOutput();
 
     	} catch (FileNotFoundException e) {
     			System.out.println("Não foi possível encontrar o arquivo <" + inputFile + ">");

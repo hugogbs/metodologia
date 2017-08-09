@@ -68,7 +68,7 @@ public class HeapSort
 
          private void writeOutput() {
         	long duration = finalTime - initialTime;
-        	String sortingMethod = "InsertionSort";
+        	String sortingMethod = "HeapSort";
 
         	try {
         		FileWriter fw = new FileWriter(outputFile, true);
