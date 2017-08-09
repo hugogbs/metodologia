@@ -1,0 +1,15 @@
+Abra um terminal e execute o arquivo ordenar.sh com o seguinte comando:
+	
+	./ordenar.sh arg1 arg2 arg3 
+
+onde:
+
+   * arg1: é o nome do arquivo jar do algoritmo a executar. Os arquivos estão na pasta jars.
+
+   * arg 2: é o nome do arquivo de entrada. Os arquivos estão na pasta input. Os arquivos de entrada
+     contém 2500001 números inteiros e o primeiro é sempre 2500000, pois indica o número de inteiros
+     a serem lidos dos arquivos.
+
+   * arg 3: é o nome do arquivo de saida. Já disponibilizamos um arquivo chamado output.csv. Você pode utilizá-lo.
+
+
