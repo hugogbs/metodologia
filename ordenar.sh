@@ -4,6 +4,7 @@
 algorithm=$1
 #The input for executing that algorithm
 input=$2
+output=$3
 
 ## Permform some validation on input arguments, one example below
 if [ -z "$1" ] || [ -z "$2" ]; then
@@ -12,4 +13,4 @@ if [ -z "$1" ] || [ -z "$2" ]; then
         exit 1
 fi
 
-java -jar $algorithm input
+java -jar $algorithm $input $output
