@@ -1,7 +1,15 @@
 // Java program for implementation of QuickSort
 // http://www.geeksforgeeks.org/quick-sort/
+import java.io.*;
+import java.util.*;
+
 class QuickSort
 {
+  private long initialTime;
+  private long finalTime;
+  private static String inputFile;
+  private static String outputFile;
+
     /* This function takes last element as pivot,
        places the pivot element at its correct
        position in sorted array, and places all
@@ -42,6 +50,8 @@ class QuickSort
       high  --> Ending index */
     void sort(int arr[], int low, int high)
     {
+      initialTime = System.nanoTime();
+
         if (low < high)
         {
             /* pi is partitioning index, arr[pi] is
@@ -53,6 +63,9 @@ class QuickSort
             sort(arr, low, pi-1);
             sort(arr, pi+1, high);
         }
+
+        finalTime = System.nanoTime();
+        writeOutput();
     }
 
     /* A utility function to print array of size n */
@@ -64,22 +77,54 @@ class QuickSort
         System.out.println();
     }
 
+    private void writeOutput() {
+   	long duration = finalTime - initialTime;
+   	String sortingMethod = "InsertionSort";
+
+   	try {
+   		FileWriter fw = new FileWriter(outputFile, true);
+
+           fw.append(sortingMethod);
+           fw.append(",");
+           fw.append(inputFile);
+           fw.append(",");
+           fw.append(String.valueOf(duration));
+           fw.append("\n");
+
+           fw.flush();
+           fw.close();
+   	} catch (IOException e) {
+   		e.printStackTrace();
+   		System.exit(1);
+   	}
+    }
+
+
     // Driver program
     public static void main(String args[])
     {
-      PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
-      System.setOut(out);
+      inputFile = args[0];
+      outputFile = args[1];
 
-        int arr[] = {10, 7, 8, 9, 1, 5};
-        int n = arr.length;
+      try {
+ 			Scanner s = new Scanner(new File(inputFile));
+ 			int[] input = new int[s.nextInt()];
+
+ 			for (int i = 0; i < input.length; i++) {
+ 				if (s.hasNextInt()) {
+ 					input[i] = s.nextInt();
+ 				}
+ 			}
+
+ 			s.close();
 
         QuickSort ob = new QuickSort();
-        long start = System.currentTimeMillis();
-        ob.sort(arr, 0, n-1);
-        long end = System.currentTimeMillis();
-        System.out.println(end - start);
-        System.out.println("sorted array");
-        printArray(arr);
+        ob.sort(input, 0, input.length);
+
+      } catch (FileNotFoundException e) {
+          System.out.println("Não foi possível encontrar o arquivo <" + inputFile + ">");
+          System.exit(1);
+      }
     }
 }
 /*This code is contributed by Rajat Mishra */
