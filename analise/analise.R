@@ -96,8 +96,15 @@ ggplot(data = dados, aes(y = tempo, x=tipo_entrada)) +
   facet_wrap(~tamanho_entrada) +
   facet_wrap(~algoritmo)
 
-Foram realmente importantes os fatores "algoritmo", "tamanho do dado" 
-e as seguintes interações: "algoritmo" e "tamanho do dado", "algoritmo" 
-e "tipo de dado de entrada" e também a interação entre os três fatores.
+######################## Segundo Experimento #################################333
 
 
+dados2 <- read_csv("dados/saida2.csv")
+aov2 <- aov(tempo ~ algoritmo *  tamanho_entrada, dados2)  
+summary(aov2)
+
+soma2 <- sum(3.673e+22, 1.236e+22, 3.669e+22, 2.579e+16)
+prop_algo <- 3.673e+22/soma2
+prop_tam <- 1.236e+22/soma2
+prop_algo_tam <- 3.669e+22/soma2
+prop_erro <- 2.579e+16/soma2
